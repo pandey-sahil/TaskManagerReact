@@ -1,29 +1,51 @@
-const TaskForm = ({ title, setTitle, isEditing, addTask, editTask }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isEditing) {
-      editTask();
-    } else {
-      addTask(title);
-    }
-  };
-
+const TaskForm = ({
+  title,
+  setTitle,
+  priority,
+  setPriority,
+  isEditing,
+  addTask,
+  editTask,
+}) => {
   return (
-    <form onSubmit={handleSubmit} className="flex items-center mb-6 w-full shadow-sm">
-      <input
-        type="text"
-        onChange={(e) => setTitle(e.target.value)}
-        value={title}
-        placeholder="What do you want to achieve today?"
-        className="flex-grow px-5 py-4 border border-zinc-700 bg-zinc-700 text-zinc-200 placeholder-zinc-400 rounded-l-xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-6 py-4 rounded-r-xl transition duration-300"
+    <div className="mb-6">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          isEditing ? editTask() : addTask();
+        }}
+        className="flex items-center space-x-4 justify-between"
       >
-        {isEditing ? "Save" : "+"}
-      </button>
-    </form>
+        <input
+          type="text"
+          placeholder="Enter task title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-2/5 px-4 py-3 rounded-lg bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+        />
+        
+        <div className="flex items-center space-x-4">
+          <label className="text-white font-medium" htmlFor="priority">Priority:</label>
+          <select
+            id="priority"
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+            className="w-3/5 px-4 py-3 rounded-lg bg-zinc-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300"
+        >
+          {isEditing ? "Edit Task" : "Add Task"}
+        </button>
+      </form>
+    </div>
   );
 };
 
