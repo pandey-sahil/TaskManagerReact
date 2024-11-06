@@ -107,7 +107,7 @@ const TaskList = ({
       )}
 
       {notification && (
-        <div className="fixed top-0 right-0 m-4 bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg">
+        <div className="fixed top-0 right-[40%] m-4 bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg">
           {notification}
         </div>
       )}
