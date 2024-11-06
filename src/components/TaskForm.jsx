@@ -14,7 +14,7 @@ const TaskForm = ({
           e.preventDefault();
           isEditing ? editTask() : addTask();
         }}
-        className="flex items-center space-x-4 justify-between"
+        className="flex items-center space-x-4"
       >
         <input
           type="text"
